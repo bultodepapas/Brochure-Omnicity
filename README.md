@@ -35,6 +35,73 @@ Dependencias clave:
 - QA: html-validate / stylelint / Pa11y / visual regression
 - Optimización: qpdf / pdfcpu
 
+## Herramientas complementarias (visual + programable)
+### 1) “Figma-lite” dentro de VS Code
+Para diagramas, wireframes y piezas rápidas versionadas en Git:
+- **Excalidraw** (VS Code extension): edita `.excalidraw` (`.svg/.png/.json`) dentro de VS Code.
+- **tldraw** (VS Code extension): whiteboard/infinite canvas con archivos `.tldr` offline.
+
+Cuándo sirve: edición visual sin salir del workflow repo-driven (sin Figma).
+
+### 2) Creación gráfica programática
+**A) Creative coding**
+- **p5.js** (+ ecosistema) para posters generativos, patrones y fondos.
+- **p5.plotSvg** si necesitas exportar SVG “plotter friendly”.
+
+**B) Vector con API limpia**
+- **Paper.js** (scene graph sobre Canvas) para shapes, curvas y operaciones tipo Illustrator.
+
+**C) Editor gráfico embebido**
+- **Fabric.js** (canvas con objetos + parse SVG).
+- **Konva** (stage/layers/shapes con eventos).
+
+### 3) SVG como formato fuente
+**Manipulación/animación**
+- **SVG.js** para manipular y animar SVG sin dependencias.
+
+**Optimización**
+- **SVGO** (CLI + librería) para limpiar y reducir tamaño.
+- **SVGOMG** (GUI de SVGO) para ajustes manuales.
+
+### 4) Tipografía programática
+- **opentype.js** para inspeccionar glifos, kerning y convertir texto a paths.
+
+Nota: al renderizar SVG -> PNG/PDF, el texto puede romperse si no controlas fuentes; considera convertir a paths cuando sea crítico.
+
+### 5) Render/export industrial (HTML/SVG -> PNG/PDF)
+**Generación de SVG desde layout tipo HTML/CSS**
+- **Satori** (npm) para templates repetibles (cards, hero, etc.).
+
+**Rasterización de SVG**
+- **resvg-js / resvg-wasm** (renderer rápido y consistente).
+
+**Procesamiento de imágenes**
+- **sharp** para resize/optimización/formatos (PNG/JPEG/WebP/AVIF).
+
+Gotcha: Satori -> SVG -> sharp puede fallar en algunos casos; mucha gente usa **resvg** como renderer final.
+
+### 6) Paginación editorial avanzada
+- **Paged.js** (paginación print-ready en navegador).
+- **Vivliostyle** (Viewer/CLI con salida PDF; opción PDF/X-1a).
+
+### 7) Animación y gráficos “de brochure”
+- **GSAP** (SVG/DOM/canvas).
+- **Motion** (alternativa moderna, buen rendimiento).
+- **Lottie-web** (animaciones AE/Bodymovin en web).
+
+### 8) Color “como diseñador” en código
+- **Culori** (OKLCH, escalas y paletas).
+- **OKLCH.com** (picker/conversor práctico).
+
+### Toolbox mínimo recomendado
+Para un flujo gráfico + programable + exportable sin complejidad excesiva:
+1. Fuente: **SVG** como assets + **HTML/CSS** como layout.
+2. Edición visual: **Excalidraw** o **tldraw** dentro de VS Code.
+3. Generación: fondos/patrones con **p5.js** o **Paper.js**; composiciones UI con **Satori -> SVG**.
+4. Render final: **resvg** (SVG -> PNG) + **sharp** (optimización).
+5. Higiene: **SVGO** para limpiar SVGs.
+6. Si es multi‑página: **Vivliostyle** o **Paged.js**.
+
 ## Estructura de repo (propuesta)
 ```
 print-studio/
